@@ -27,6 +27,60 @@
 
 #ifndef defaults_h
 
+#ifdef DEFAULTS_OMM
+
+  #define MOTOR_STP 200 // number of step per turn
+  #define MICRO_STP 16  // Micro stepping 1/16 step
+  #define X_SCREW_PITCH_MM 5 // Screw pitch in mm - 1605
+  #define Y_SCREW_PITCH_MM 5 // Screw pitch in mm - 1605
+  #define Z_SCREW_PITCH_MM 4 // Screw pitch in mm - 1204
+
+  #define DEFAULT_X_STEPS_PER_MM (MICRO_STP*MOTOR_STP/X_SCREW_PITCH_MM)
+  #define DEFAULT_Y_STEPS_PER_MM (MICRO_STP*MOTOR_STP/Y_SCREW_PITCH_MM)
+  #define DEFAULT_Z_STEPS_PER_MM (MICRO_STP*MOTOR_STP/Z_SCREW_PITCH_MM)
+
+  #define DEFAULT_X_MAX_RATE 1000.0 // mm/min
+  #define DEFAULT_Y_MAX_RATE 1000.0 // mm/min
+  #define DEFAULT_Z_MAX_RATE 500.0 // mm/min
+
+  #define DEFAULT_X_ACCELERATION (10.0*60*60) // 10*60*60 mm/min^2 = 10 mm/sec^2
+  #define DEFAULT_Y_ACCELERATION (10.0*60*60) // 10*60*60 mm/min^2 = 10 mm/sec^2
+  #define DEFAULT_Z_ACCELERATION (10.0*60*60) // 10*60*60 mm/min^2 = 10 mm/sec^2
+
+  #define DEFAULT_X_MAX_TRAVEL 850.0 // mm NOTE: Must be a positive value.
+  #define DEFAULT_Y_MAX_TRAVEL 1050.0 // mm NOTE: Must be a positive value.
+  #define DEFAULT_Z_MAX_TRAVEL 80.0 // mm NOTE: Must be a positive value.
+
+  #define DEFAULT_SPINDLE_RPM_MAX 2000.0 // rpm
+  #define DEFAULT_SPINDLE_RPM_MIN 20000.0// rpm
+
+  #define DEFAULT_STEP_PULSE_MICROSECONDS 10
+  #define DEFAULT_STEPPING_INVERT_MASK 0
+  #define DEFAULT_DIRECTION_INVERT_MASK (1<<X_AXIS)|(1<<Z_AXIS)
+
+  #define DEFAULT_STEPPER_IDLE_LOCK_TIME 255 // msec (0-254, 255 keeps steppers enabled)
+  #define DEFAULT_STATUS_REPORT_MASK ((BITFLAG_RT_STATUS_MACHINE_POSITION)|(BITFLAG_RT_STATUS_WORK_POSITION))
+
+  #define DEFAULT_JUNCTION_DEVIATION 0.01 // mm
+  #define DEFAULT_ARC_TOLERANCE 0.002 // mm
+  #define DEFAULT_REPORT_INCHES 0 // false
+  #define DEFAULT_INVERT_ST_ENABLE 0 // false
+  #define DEFAULT_INVERT_LIMIT_PINS 0 // false
+  #define DEFAULT_SOFT_LIMIT_ENABLE 0 // false
+  #define DEFAULT_HARD_LIMIT_ENABLE 0  // True pour activer endstop
+
+  #define DEFAULT_INVERT_PROBE_PIN 0 // false
+  #define DEFAULT_LASER_MODE 0 // false
+  #define DEFAULT_HOMING_ENABLE 1 // false
+  #define DEFAULT_HOMING_DIR_MASK 3 // move negative dir
+
+  #define DEFAULT_HOMING_FEED_RATE 25.0 // mm/min
+  #define DEFAULT_HOMING_SEEK_RATE 500.0 // mm/min
+  #define DEFAULT_HOMING_DEBOUNCE_DELAY 250 // msec (0-65k)
+  #define DEFAULT_HOMING_PULLOFF 1.0 // mm
+
+#endif
+
 #ifdef DEFAULTS_GENERIC
   // Grbl generic default settings. Should work across different machines.
   #define DEFAULT_X_STEPS_PER_MM 250.0
