@@ -95,6 +95,7 @@ typedef struct {
   float rpm_min;
 
   uint8_t flags;  // Contains default boolean settings
+  uint8_t soft_limits_mask;
 
   uint8_t homing_dir_mask;
   float homing_feed_rate;
